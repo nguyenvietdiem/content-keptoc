@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lộ Trình Content 30 Ngày – Kẹp Tóc Handmade</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f1;
+    --warm: #f5ede0;
+    --blush: #e8c4b0;
+    --rose: #c97f6a;
+    --deep: #7a4035;
+    --brown: #3d1f14;
+    --sage: #9aaa8a;
+    --sage-light: #d4dfc9;
+    --text: #2d1a12;
+    --muted: #8a6a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  /* grain overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* HEADER */
+  header { text-align: center; margin-bottom: 60px; }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--rose);
+    border: 1px solid var(--blush);
+    padding: 6px 16px; border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 64px);
+    color: var(--brown);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  h1 em { color: var(--rose); font-style: italic; }
+
+  .subtitle {
+    color: var(--muted); font-size: 15px; font-weight: 300;
+    max-width: 500px; margin: 0 auto 30px;
+    line-height: 1.7;
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center; margin-bottom: 50px;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; max-width: 120px;
+    height: 1px; background: var(--blush);
+  }
+  .divider span { font-size: 18px; }
+
+  /* PILLARS */
+  .pillars {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin-bottom: 60px;
+  }
+
+  .pillar {
+    background: white; border-radius: 16px;
+    padding: 20px; text-align: center;
+    border: 1px solid rgba(200,160,140,0.2);
+    box-shadow: 0 2px 20px rgba(122,64,53,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(122,64,53,0.12); }
+
+  .pillar-icon { font-size: 28px; margin-bottom: 10px; }
+  .pillar-name {
+    font-size: 13px; font-weight: 600; color: var(--brown);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .pillar-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* WEEK SECTIONS */
+  .week-block { margin-bottom: 50px; }
+
+  .week-title {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .week-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700;
+    background: var(--rose); color: white;
+    padding: 6px 16px; border-radius: 30px;
+    white-space: nowrap;
+  }
+  .week-theme {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-style: italic; color: var(--deep);
+  }
+  .week-line { flex: 1; height: 1px; background: var(--blush); }
+
+  /* DAY CARDS GRID */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .day-card {
+    background: white; border-radius: 14px;
+    padding: 20px 22px;
+    border: 1px solid rgba(200,160,140,0.2);
+    box-shadow: 0 2px 12px rgba(122,64,53,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .day-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(122,64,53,0.1); }
+
+  .day-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .pillar-make .day-card::before { background: linear-gradient(90deg, var(--rose), var(--blush)); }
+  .pillar-story .day-card::before { background: linear-gradient(90deg, var(--sage), var(--sage-light)); }
+  .pillar-tips .day-card::before { background: linear-gradient(90deg, #e8b04a, #f5d89a); }
+  .pillar-life .day-card::before { background: linear-gradient(90deg, #a48cbf, #d4c5e8); }
+  .pillar-engage .day-card::before { background: linear-gradient(90deg, #7ab8c8, #b8dce6); }
+
+  .day-num {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .day-type {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding: 3px 10px; border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .type-make { background: #fde8e0; color: var(--rose); }
+  .type-story { background: var(--sage-light); color: #5a7a4a; }
+  .type-tips { background: #fdf3d8; color: #a07820; }
+  .type-life { background: #ede5f5; color: #7a5a9a; }
+  .type-engage { background: #dff0f5; color: #3a7a9a; }
+
+  .day-title {
+    font-size: 14px; font-weight: 600; color: var(--brown);
+    margin-bottom: 8px; line-height: 1.4;
+  }
+  .day-desc {
+    font-size: 12px; color: var(--muted);
+    line-height: 1.6;
+  }
+  .day-hook {
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px dashed var(--blush);
+    font-size: 11.5px; color: var(--rose);
+    font-style: italic; line-height: 1.5;
+  }
+
+  /* TIPS BOX */
+  .tips-box {
+    background: linear-gradient(135deg, var(--deep), var(--rose));
+    border-radius: 20px; padding: 36px 40px;
+    color: white; margin-top: 60px;
+  }
+  .tips-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-style: italic; margin-bottom: 20px;
+  }
+  .tips-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .tip-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 16px;
+  }
+  .tip-item strong { display: block; font-size: 13px; margin-bottom: 6px; }
+  .tip-item span { font-size: 12px; opacity: 0.85; line-height: 1.5; }
+
+  footer {
+    text-align: center; margin-top: 60px;
+    font-size: 12px; color: var(--muted); letter-spacing: 1px;
+  }
+  footer span { color: var(--rose); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="tag">✨ Kế hoạch content</div>
+    <h1>30 Ngày Làm <em>Kẹp Tóc</em><br>& Kể Chuyện Cuộc Sống</h1>
+    <p class="subtitle">Lộ trình nội dung dành riêng cho bạn — vừa làm, vừa quay, vừa sống thật</p>
+    <div class="divider"><span>🎀</span></div>
+  </header>
+
+  <!-- PILLARS -->
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🎀</div>
+      <div class="pillar-name">Làm &amp; Quay</div>
+      <div class="pillar-desc">Process video tay làm kẹp, ASMR, timelapse</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🌿</div>
+      <div class="pillar-name">Tâm Sự</div>
+      <div class="pillar-desc">Kể chuyện cuộc sống, cảm xúc thật</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">💡</div>
+      <div class="pillar-name">Tips &amp; Know-how</div>
+      <div class="pillar-desc">Mẹo, chất liệu, design inspiration</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">☕</div>
+      <div class="pillar-name">Slice of Life</div>
+      <div class="pillar-desc">Ngày thường, góc nhà, cảm hứng</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">💬</div>
+      <div class="pillar-name">Kết Nối</div>
+      <div class="pillar-desc">Hỏi audience, Q&amp;A, thử thách</div>
+    </div>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div class="week-block pillar-make">
+    <div class="week-title">
+      <span class="week-badge">Tuần 1</span>
+      <span class="week-theme">"Chào mừng vào thế giới của mình"</span>
+      <div class="week-line"></div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num">Ngày 1</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Video giới thiệu bản thân & hành trình bắt đầu làm kẹp</div>
+        <div class="day-desc">Kể từ đâu bạn bắt đầu? Tại sao chọn làm kẹp tóc handmade? Cảm xúc đầu tiên khi hoàn thành sản phẩm.</div>
+        <div class="day-hook">💬 Hook: "Tôi không ngờ mình lại bắt đầu từ một ngày rất bình thường…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 2</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Video làm kẹp đầu tiên lên kênh — full process</div>
+        <div class="day-desc">Quay toàn bộ quá trình từ chọn vải/vật liệu đến thành phẩm. Nói chuyện tự nhiên trong lúc làm.</div>
+        <div class="day-hook">💬 Hook: "Mỗi cái kẹp này mất khoảng X phút — bạn xem thử có kiên nhẫn như mình không?"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 3</div>
+        <span class="day-type type-tips">Tips</span>
+        <div class="day-title">3 dụng cụ không thể thiếu khi làm kẹp handmade</div>
+        <div class="day-desc">Giới thiệu góc làm việc, dụng cụ cơ bản. Vừa cầm vừa kể câu chuyện mua từng món.</div>
+        <div class="day-hook">💬 Hook: "Cái này mình mua sai đến 3 lần trước khi tìm được đúng loại…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 4</div>
+        <span class="day-type type-life">Slice of Life</span>
+        <div class="day-title">Một ngày bình thường của mình trông như thế nào</div>
+        <div class="day-desc">Vlog ngắn: sáng thức dậy, café/trà, ngồi làm kẹp, suy nghĩ lúc làm. Không cần hoàn hảo.</div>
+        <div class="day-hook">💬 Hook: "Người ta hay hỏi mình làm gì cả ngày — thật ra là thế này…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 5</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">ASMR làm kẹp — không nhạc, chỉ có tiếng tay làm</div>
+        <div class="day-desc">Video yên tĩnh, quay cận tay. Tiếng kéo cắt, tiếng vải, tiếng kẹp bấm. Rất relax và thu hút.</div>
+        <div class="day-hook">💬 Caption: "Xem lúc muốn thư giãn 🤍"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 6</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Điều gì khiến bạn tiếp tục làm khi muốn bỏ cuộc?</div>
+        <div class="day-desc">Chia sẻ thật về một giai đoạn khó khăn trong cuộc sống và handmade đã giúp bạn thế nào.</div>
+        <div class="day-hook">💬 Hook: "Có một thời điểm mình gần như không muốn làm gì nữa…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 7</div>
+        <span class="day-type type-engage">Kết Nối</span>
+        <div class="day-title">Hỏi audience: Bạn thích kiểu kẹp nào nhất?</div>
+        <div class="day-desc">Đăng ảnh 3–4 mẫu kẹp đã làm, hỏi mọi người vote. Tổng kết cuối video/post.</div>
+        <div class="day-hook">💬 Hook: "Tuần sau mình sẽ làm theo lựa chọn của các bạn!"</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-block pillar-story">
+    <div class="week-title">
+      <span class="week-badge">Tuần 2</span>
+      <span class="week-theme">"Những bàn tay và những câu chuyện"</span>
+      <div class="week-line"></div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num">Ngày 8</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Làm mẫu kẹp được vote nhiều nhất từ tuần 1</div>
+        <div class="day-desc">Thực hiện lời hứa với audience. Nói cảm ơn, quay process, tâm sự nhẹ trong lúc làm.</div>
+        <div class="day-hook">💬 Hook: "Mọi người đã chọn — và đây là thành quả!"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 9</div>
+        <span class="day-type type-tips">Tips</span>
+        <div class="day-title">Cách chọn vải/vật liệu: đừng mua như mình hồi đầu</div>
+        <div class="day-desc">Chia sẻ kinh nghiệm thật, những lần mua sai, tiền nào mua được chất lượng gì.</div>
+        <div class="day-hook">💬 Hook: "Mình từng mua hết 200k vải nhưng chỉ dùng được 1/4…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 10</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Sự khác biệt giữa "bận" và "mệt" — mình học được điều này khi nào?</div>
+        <div class="day-desc">Video ngắn, ngồi nói chuyện tự nhiên. Không cần kẹp tóc hay quay tay — chỉ là bạn và camera.</div>
+        <div class="day-hook">💬 Hook: "Bận thì vẫn có thể vui. Còn mệt thì khác hẳn…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 11</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Timelapse làm 5 cái kẹp trong 1 buổi chiều</div>
+        <div class="day-desc">Quay nhanh, thêm nhạc chill, thêm caption vui. Rất dễ viral trên Reels/TikTok.</div>
+        <div class="day-hook">💬 Caption: "Một buổi chiều productive của mình 🎀"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 12</div>
+        <span class="day-type type-life">Slice of Life</span>
+        <div class="day-title">Góc làm việc của mình — aesthetic &amp; thật sự</div>
+        <div class="day-desc">Quay góc nhà, bàn làm, ánh sáng. Vừa đẹp vừa thật, không cần quá staged. Kể về không gian này.</div>
+        <div class="day-hook">💬 Hook: "Nơi này nhỏ thôi, nhưng mình thấy bình yên nhất ở đây"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 13</div>
+        <span class="day-type type-tips">Tips</span>
+        <div class="day-title">Cách chụp ảnh kẹp tóc đẹp với điện thoại thường</div>
+        <div class="day-desc">Behind-the-scenes chụp ảnh sản phẩm: ánh sáng tự nhiên, background đơn giản, góc chụp.</div>
+        <div class="day-hook">💬 Hook: "Không cần máy ảnh xịn — mình làm được thì bạn cũng làm được!"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 14</div>
+        <span class="day-type type-engage">Kết Nối</span>
+        <div class="day-title">Q&A: Hỏi mình bất cứ điều gì về làm kẹp &amp; cuộc sống</div>
+        <div class="day-desc">Post hỏi audience trước 1–2 ngày, thu câu hỏi rồi trả lời thành video. Tạo kết nối mạnh.</div>
+        <div class="day-hook">💬 Hook: "Các bạn hỏi — mình trả lời thật 100%"</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week-block pillar-tips">
+    <div class="week-title">
+      <span class="week-badge">Tuần 3</span>
+      <span class="week-theme">"Đằng sau mỗi chiếc kẹp là một tâm trạng"</span>
+      <div class="week-line"></div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num">Ngày 15</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Điều mình ước mình biết sớm hơn về việc bắt đầu một điều gì đó mới</div>
+        <div class="day-desc">Reflect về hành trình. Có thể kết hợp vừa làm kẹp vừa nói chuyện — rất authentic.</div>
+        <div class="day-hook">💬 Hook: "Nếu được quay lại, mình chỉ muốn nói với bản thân rằng…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 16</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Thử một chất liệu mới lần đầu tiên — thành hay bại?</div>
+        <div class="day-desc">Thật sự thử điều gì đó chưa làm. Quay cả lúc thất bại (nếu có) — rất relatable và vui.</div>
+        <div class="day-hook">💬 Hook: "Mình không biết cái này sẽ ra sao… cùng xem nhé!"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 17</div>
+        <span class="day-type type-life">Slice of Life</span>
+        <div class="day-title">Ngày mình không có cảm hứng — mình làm gì?</div>
+        <div class="day-desc">Nói thật về những ngày lười, flat, không muốn quay. Creative burnout là thật và mọi người đồng cảm.</div>
+        <div class="day-hook">💬 Hook: "Hôm nay thật ra mình không muốn làm gì cả…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 18</div>
+        <span class="day-type type-tips">Tips</span>
+        <div class="day-title">Xu hướng kẹp tóc mùa này — và mình nghĩ gì về chúng</div>
+        <div class="day-desc">Tổng hợp 3–4 trend hiện tại, thêm nhận xét cá nhân. Dễ làm, có giá trị tìm kiếm cao.</div>
+        <div class="day-hook">💬 Hook: "Trend này xinh thật nhưng mà làm thì…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 19</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Làm kẹp theo màu sắc cảm xúc hôm nay</div>
+        <div class="day-desc">Kết hợp màu sắc = tâm trạng. Hôm nay bạn cảm thấy thế nào? Tại sao chọn màu đó?</div>
+        <div class="day-hook">💬 Hook: "Hôm nay mình chọn màu này vì…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 20</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Mình định nghĩa "thành công" như thế nào — và nó đã thay đổi chưa?</div>
+        <div class="day-desc">Bài sâu hơn, nói chuyện trực tiếp vào camera. Đây là loại content tạo fan trung thành nhất.</div>
+        <div class="day-hook">💬 Hook: "Hồi trước mình nghĩ thành công là… bây giờ thì khác rồi"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 21</div>
+        <span class="day-type type-engage">Kết Nối</span>
+        <div class="day-title">Thử thách: Bạn có thể làm kẹp từ những gì có ở nhà không?</div>
+        <div class="day-desc">Mình làm trước, invite audience làm theo và tag. Tạo community, tăng reach organic.</div>
+        <div class="day-hook">💬 Hook: "Challenge này không cần mua gì thêm — thử ngay đi!"</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week-block pillar-life">
+    <div class="week-title">
+      <span class="week-badge">Tuần 4</span>
+      <span class="week-theme">"Kết thúc là khởi đầu mới"</span>
+      <div class="week-line"></div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num">Ngày 22</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Làm bộ sưu tập nhỏ có chủ đề — 5 cái cùng concept</div>
+        <div class="day-desc">Chọn 1 concept (mùa hè / hoa / màu nude…) và làm 5 cái. Quay process + reveal cuối.</div>
+        <div class="day-hook">💬 Hook: "Mình muốn thử làm cả một bộ cùng nhau…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 23</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Điều mình thích nhất &amp; ghét nhất về việc làm handmade</div>
+        <div class="day-desc">Honest và hài hước. Nói cả phần khó khăn thật sự — audience yêu thích sự chân thật.</div>
+        <div class="day-hook">💬 Hook: "Không phải lúc nào cũng aesthetic như trên mạng đâu nhé…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 24</div>
+        <span class="day-type type-tips">Tips</span>
+        <div class="day-title">Cách định giá sản phẩm handmade — mình tính như thế nào?</div>
+        <div class="day-desc">Nhiều người làm handmade không biết định giá. Chia sẻ công thức đơn giản, rất có ích.</div>
+        <div class="day-hook">💬 Hook: "Định giá thấp quá không phải là tốt — đây là lý do…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 25</div>
+        <span class="day-type type-life">Slice of Life</span>
+        <div class="day-title">Vlog một ngày cuối tuần — vừa làm kẹp vừa nghỉ ngơi</div>
+        <div class="day-desc">Chill vlog: sáng chậm, làm vài cái kẹp, ra ngoài hoặc đọc sách. Không có script.</div>
+        <div class="day-hook">💬 Caption: "Cuối tuần nhẹ nhàng của mình 🌿"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 26</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Làm lại một mẫu hỏng từ ngày đầu — so sánh trước sau</div>
+        <div class="day-desc">Lấy mẫu cũ ra so sánh với hiện tại. Câu chuyện về sự tiến bộ rất truyền cảm hứng.</div>
+        <div class="day-hook">💬 Hook: "Cái này là của mình ngày đầu làm… xấu lắm, nhưng…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 27</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">Những người đã ảnh hưởng tới mình — bạn bè, gia đình, hay một người lạ?</div>
+        <div class="day-desc">Câu chuyện về con người — rất gần gũi và dễ share. Vừa làm kẹp vừa kể.</div>
+        <div class="day-hook">💬 Hook: "Người thay đổi cách mình nhìn mọi thứ là một người mình không ngờ đến…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 28</div>
+        <span class="day-type type-engage">Kết Nối</span>
+        <div class="day-title">Mọi người muốn mình làm gì trong tháng tới? — Hỏi audience</div>
+        <div class="day-desc">Tạo poll, hỏi thêm chủ đề, mẫu kẹp. Audience cảm thấy được tham gia — tăng loyalty.</div>
+        <div class="day-hook">💬 Hook: "Tháng sau mình muốn làm điều các bạn thích — vote nhé!"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 29</div>
+        <span class="day-type type-make">Làm &amp; Quay</span>
+        <div class="day-title">Video đặc biệt: Làm kẹp trong bóng tối — chỉ có ánh nến</div>
+        <div class="day-desc">Thẩm mỹ và khác biệt. Nến/đèn mờ, nhạc nền nhẹ. Nói chuyện về việc làm điều mình yêu.</div>
+        <div class="day-hook">💬 Hook: "Tối nay mình muốn làm theo kiểu khác một chút…"</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num">Ngày 30</div>
+        <span class="day-type type-story">Tâm sự</span>
+        <div class="day-title">30 ngày nhìn lại — mình học được gì, cảm thấy gì?</div>
+        <div class="day-desc">Video tổng kết thật sự. Nhìn lại hành trình, cảm ơn audience, chia sẻ kế hoạch tiếp theo.</div>
+        <div class="day-hook">💬 Hook: "30 ngày trước mình không biết mình sẽ thay đổi thế này…"</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIPS BOX -->
+  <div class="tips-box">
+    <h3>✨ Bí kíp để làm tốt lộ trình này</h3>
+    <div class="tips-list">
+      <div class="tip-item">
+        <strong>📱 Quay tự nhiên nhất</strong>
+        <span>Đừng cố diễn. Nói như nói chuyện với bạn thân — khán giả cảm nhận được sự thật.</span>
+      </div>
+      <div class="tip-item">
+        <strong>🎀 Kẹp tóc là "bạn đồng hành"</strong>
+        <span>Không cần lúc nào cũng review kẹp — để nó xuất hiện tự nhiên trong cuộc sống.</span>
+      </div>
+      <div class="tip-item">
+        <strong>📆 Không cần đăng đúng ngày</strong>
+        <span>Lộ trình này là hướng dẫn, không phải lịch cứng. Linh hoạt theo cuộc sống thật của bạn.</span>
+      </div>
+      <div class="tip-item">
+        <strong>💬 Hook là vũ khí mạnh nhất</strong>
+        <span>3 giây đầu quyết định tất cả. Bắt đầu bằng câu hỏi, bí ẩn, hoặc điều bất ngờ.</span>
+      </div>
+      <div class="tip-item">
+        <strong>🌿 Đừng so sánh</strong>
+        <span>Kênh của bạn là câu chuyện của bạn. Không ai có góc nhìn, bàn tay, và cuộc sống giống bạn.</span>
+      </div>
+      <div class="tip-item">
+        <strong>🔁 Tái sử dụng nội dung</strong>
+        <span>1 video dài → cắt thành 3 Reels/Shorts. Làm ít, lan tỏa nhiều hơn.</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Được tạo cho bạn với 🤍 &nbsp;|&nbsp; <span>Kẹp Tóc Handmade × Content Journey</span></p>
+  </footer>
+
+</div>
+</body>
+</html>
