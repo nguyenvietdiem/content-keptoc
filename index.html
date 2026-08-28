@@ -380,6 +380,87 @@
     color:var(--ink-soft);
   }
 
+  /* ===== Review reply guide ===== */
+  .principle-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:30px;
+  }
+  .principle-item{
+    display:flex;
+    gap:12px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .principle-num{
+    flex-shrink:0;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;
+    color:#fff;
+    background:var(--sage);
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.78rem;
+  }
+  .principle-body h4{
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:0.94rem;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .principle-body p{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  .review-template-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--raspberry);
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .review-template-card.mid{border-left-color:var(--honey);}
+  .review-template-card.low{border-left-color:var(--ink-soft);}
+  .review-stars{
+    font-size:0.9rem;
+    margin-bottom:8px;
+    color:var(--honey);
+    letter-spacing:2px;
+  }
+  .review-template-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+    display:block;
+  }
+  .review-template-text{
+    font-size:0.92rem;
+    font-style:italic;
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .review-tip{
+    background:var(--cream-deep);
+    border-left:3px solid var(--sage);
+    border-radius:8px;
+    padding:12px 16px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+
   @media (max-width:640px){
     .role-grid{grid-template-columns:1fr;}
     .week-title{font-size:1.4rem;}
@@ -509,6 +590,36 @@ const WEEKS = [
   }
 ];
 
+const REVIEW_PRINCIPLES = [
+  {title:"Trả lời càng sớm càng tốt", text:"Lý tưởng là trong vòng 24 giờ sau khi khách đăng review. Tốc độ phản hồi là tín hiệu cho Google thấy hồ sơ đang hoạt động tích cực, giúp tăng độ tin cậy trong Local SEO."},
+  {title:"Nhắc tên sản phẩm cụ thể khách đã mua", text:"Thay vì viết chung chung cảm ơn bạn, hãy nhắc rõ tên sản phẩm như sữa chua truyền thống, sữa chua Hy Lạp, sữa chua mix vị, giúp Google hiểu rõ phạm vi sản phẩm và nội dung phản hồi giàu thông tin hơn."},
+  {title:"Chèn từ khóa địa phương một cách tự nhiên", text:"Thỉnh thoảng nhắc đến sữa chua nhà làm Thủ Đức hoặc khu vực giao hàng, nhưng không nhét vào mọi review vì dễ bị coi là spam từ khóa. Khoảng 3 đến 5 review xuất hiện từ khóa một lần là hợp lý."},
+  {title:"Mỗi câu trả lời phải khác nhau", text:"Không dùng chung một mẫu câu cho tất cả review. Nội dung trùng lặp làm giảm giá trị SEO và khiến khách cảm thấy phản hồi máy móc. Nên biến tấu cách xưng hô và chi tiết nhắc đến."},
+  {title:"Luôn trả lời cả review thấp sao", text:"Đừng bỏ qua review 3 sao trở xuống. Trả lời điềm tĩnh, ghi nhận góp ý, nêu hướng khắc phục cụ thể. Review tiêu cực được xử lý tốt còn tăng niềm tin với khách mới hơn là không có review tiêu cực nào."},
+  {title:"Xưng hô nhất quán bằng tên thương hiệu", text:"Nên ký tên cuối mỗi câu trả lời là Bếp Mẹ Thỏ thay vì tên cá nhân, giúp nhận diện thương hiệu đồng nhất và là một tín hiệu thương hiệu rõ ràng cho thuật toán."}
+];
+
+const REVIEW_TEMPLATES = [
+  {
+    level:"high",
+    stars:"★★★★★",
+    label:"Review 5 sao, khách khen",
+    text:"Cảm ơn chị đã tin tưởng và ủng hộ Bếp Mẹ Thỏ. Rất vui vì bé nhà mình thích sữa chua Hy Lạp, đây cũng là dòng sản phẩm được nhiều mẹ ở khu vực Thủ Đức chọn cho con vì ít ngọt, béo mịn tự nhiên. Hẹn gặp lại chị ở đơn hàng tiếp theo nhé. Bếp Mẹ Thỏ."
+  },
+  {
+    level:"mid",
+    stars:"★★★★",
+    label:"Review 4 sao, khen kèm góp ý nhỏ",
+    text:"Cảm ơn anh chị đã dành thời gian đánh giá sữa chua mix vị matcha bên em. Em ghi nhận góp ý về độ ngọt và sẽ điều chỉnh công thức cho phù hợp hơn trong những mẻ tiếp theo. Rất mong tiếp tục được phục vụ gia đình mình. Bếp Mẹ Thỏ."
+  },
+  {
+    level:"low",
+    stars:"★★",
+    label:"Review 1 đến 2 sao, khách chưa hài lòng",
+    text:"Bếp Mẹ Thỏ xin lỗi vì trải nghiệm chưa tốt của chị với đơn sữa chua truyền thống vừa rồi. Sữa chua nhà làm không dùng chất bảo quản nên có thể nhạy cảm hơn với nhiệt độ khi vận chuyển, em sẽ kiểm tra lại khâu đóng gói và giữ lạnh để tránh lặp lại tình trạng này. Chị vui lòng nhắn Zalo 0966 080 625 để em hỗ trợ đổi lại hoặc hoàn tiền cho đơn này ạ."
+  }
+];
+
 const state = {};
 WEEKS.forEach(w => { state[w.number] = w.tasks.map(() => false); });
 let activeWeek = 1;
@@ -552,6 +663,11 @@ function renderTabs(){
     btn.addEventListener('click', () => switchWeek(w.number));
     tabs.appendChild(btn);
   });
+  const reviewBtn = document.createElement('button');
+  reviewBtn.className = 'tab-btn' + (activeWeek === 'review' ? ' active' : '');
+  reviewBtn.textContent = '💬 Mẫu trả lời review';
+  reviewBtn.addEventListener('click', () => switchWeek('review'));
+  tabs.appendChild(reviewBtn);
 }
 
 function taskCard(weekNumber, task, idx){
@@ -663,6 +779,49 @@ function buildWeekPanel(week){
   return panel;
 }
 
+function buildReviewPanel(){
+  const panel = document.createElement('section');
+  panel.className = 'week-panel';
+  panel.id = 'panel-review';
+
+  const principlesHTML = REVIEW_PRINCIPLES.map((p, i) => `
+    <div class="principle-item">
+      <div class="principle-num mono">${i+1}</div>
+      <div class="principle-body">
+        <h4>${p.title}</h4>
+        <p>${p.text}</p>
+      </div>
+    </div>
+  `).join('');
+
+  const templatesHTML = REVIEW_TEMPLATES.map(t => `
+    <div class="review-template-card ${t.level === 'mid' ? 'mid' : (t.level === 'low' ? 'low' : '')}">
+      <div class="review-stars">${t.stars}</div>
+      <span class="review-template-label">${t.label}</span>
+      <p class="review-template-text">"${t.text}"</p>
+    </div>
+  `).join('');
+
+  panel.innerHTML = `
+    <div class="week-hero">
+      <span class="week-eyebrow">Tài liệu lưu trữ</span>
+      <h2 class="week-title">Mẫu trả lời đánh giá (review) chuẩn SEO</h2>
+      <p class="week-goal">Áp dụng khi trả lời review trên Google Maps hoặc Fanpage, để vừa giữ được sự chân thành với khách, vừa hỗ trợ Local SEO cho hồ sơ doanh nghiệp.</p>
+    </div>
+
+    <div class="task-list-title">Nguyên tắc trả lời</div>
+    <div class="principle-list">${principlesHTML}</div>
+
+    <div class="task-list-title">Mẫu câu trả lời theo từng loại đánh giá</div>
+    ${templatesHTML}
+
+    <div class="review-tip">Lưu ý: không copy nguyên văn một mẫu cho tất cả review, hãy đổi vài từ hoặc chi tiết mỗi lần để tránh nội dung trùng lặp.</div>
+    <div class="review-tip">Với review tiêu cực, tuyệt đối không tranh cãi công khai hay đổ lỗi cho khách, cách xử lý khủng hoảng được người xem sau đánh giá nhiều hơn bản thân sự việc.</div>
+  `;
+
+  return panel;
+}
+
 function switchWeek(weekNumber){
   activeWeek = weekNumber;
   document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
@@ -715,6 +874,10 @@ function init(){
     </div>
   `;
   main.appendChild(roleSection);
+
+  const reviewPanel = buildReviewPanel();
+  if(activeWeek === 'review') reviewPanel.classList.add('active');
+  main.appendChild(reviewPanel);
 
   renderTabs();
   renderDayTrack();
