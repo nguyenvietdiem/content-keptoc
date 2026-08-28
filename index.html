@@ -2,432 +2,727 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Sổ Tay 30 Ngày – Kẹp Tóc Handmade</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bếp Mẹ Thỏ · Lộ trình 30 ngày</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  :root{
+    --cream:#FDF4DE;
+    --cream-deep:#F7E9C6;
+    --ink:#2B2418;
+    --ink-soft:#5A5040;
+    --sage:#445D3E;
+    --sage-deep:#324530;
+    --raspberry:#C9184A;
+    --honey:#E8A93D;
+    --line:#E4DCC8;
+    --paper:#FFFCF4;
+    --radius:14px;
+  }
 
-:root {
-  --cream: #faf7f3;
-  --rose: #c8765e;
-  --rose-light: #f5e6df;
-  --rose-mid: #e8c4b5;
-  --brown: #3a1e12;
-  --muted: #9a7060;
-  --sage: #8fa882;
-  --sage-light: #dde8d5;
-  --amber: #c49440;
-  --amber-light: #f5eccf;
-  --purple: #9478b8;
-  --purple-light: #ede5f5;
-  --blue: #5a8fa8;
-  --blue-light: #ddeef5;
-  --white: #ffffff;
-  --border: rgba(180,130,110,0.18);
-  --shadow: rgba(100,50,30,0.07);
-}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
 
-body {
-  background: var(--cream);
-  font-family: 'Be Vietnam Pro', sans-serif;
-  color: var(--brown);
-  min-height: 100vh;
-  padding: 0 0 60px;
-  max-width: 480px;
-  margin: 0 auto;
-}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Be Vietnam Pro', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
 
-/* ── HEADER ── */
-.header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 28px 20px 24px;
-  text-align: center;
-  position: sticky; top: 0; z-index: 100;
-}
-.header-tag {
-  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--rose); font-weight: 500;
-  display: block; margin-bottom: 6px;
-}
-.header-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 500; color: var(--brown);
-  line-height: 1.2;
-}
-.header-title em { color: var(--rose); font-style: italic; }
-.header-sub {
-  font-size: 12px; color: var(--muted); margin-top: 5px; font-weight: 300;
-}
+  h1,h2,h3{
+    font-family:'Literata', serif;
+    margin:0;
+    color:var(--ink);
+  }
 
-/* ── LEGEND PILLS ── */
-.legend {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  padding: 14px 20px; border-bottom: 1px solid var(--border);
-  background: var(--white);
-}
-.pill {
-  font-size: 11px; font-weight: 500;
-  padding: 4px 10px; border-radius: 20px;
-  white-space: nowrap;
-}
-.pill-make  { background: var(--rose-light);   color: #8a4530; }
-.pill-story { background: var(--sage-light);   color: #4a6a40; }
-.pill-tips  { background: var(--amber-light);  color: #7a5c10; }
-.pill-life  { background: var(--purple-light); color: #5a3a8a; }
-.pill-engage{ background: var(--blue-light);   color: #2a5a78; }
+  a{color:var(--sage-deep);}
 
-/* ── WEEK HEADER ── */
-.week-header {
-  padding: 22px 20px 10px;
-  display: flex; align-items: center; gap: 10px;
-}
-.week-badge {
-  font-size: 11px; font-weight: 600; letter-spacing: 1px;
-  text-transform: uppercase;
-  background: var(--rose); color: white;
-  padding: 4px 12px; border-radius: 20px;
-  white-space: nowrap;
-}
-.week-theme {
-  font-family: 'Playfair Display', serif;
-  font-size: 13px; font-style: italic;
-  color: var(--muted); line-height: 1.4;
-}
+  .mono{font-family:'JetBrains Mono', monospace;}
 
-/* ── DAY LIST ── */
-.days-list { padding: 0 16px; }
+  /* ===== Header ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(253,244,222,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-top{
+    max-width:1100px;
+    margin:0 auto;
+    padding:16px 24px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .brand .rabbit{font-size:1.4rem;}
+  .brand-name{font-family:'Literata',serif; font-weight:700; font-size:1.25rem;}
+  .brand-sub{font-size:0.82rem; color:var(--ink-soft);}
 
-.day-item {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px var(--shadow);
-}
+  .overall-progress{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  .overall-bar{
+    width:140px;
+    height:8px;
+    border-radius:99px;
+    background:var(--line);
+    overflow:hidden;
+  }
+  .overall-bar-fill{
+    height:100%;
+    background:var(--raspberry);
+    width:0%;
+    transition:width 0.4s ease;
+  }
+  .overall-num{font-family:'JetBrains Mono',monospace; color:var(--ink); font-weight:600;}
 
-.day-trigger {
-  display: flex; align-items: center; gap: 12px;
-  padding: 15px 16px;
-  cursor: pointer;
-  user-select: none;
-}
+  /* ===== Day track (signature element) ===== */
+  .day-track-wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px 14px;
+    overflow-x:auto;
+  }
+  .day-track{
+    display:flex;
+    gap:3px;
+    min-width:600px;
+  }
+  .day-cell{
+    flex:1;
+    height:22px;
+    border-radius:3px;
+    background:var(--line);
+    position:relative;
+    cursor:pointer;
+    transition:background 0.2s ease, transform 0.15s ease;
+  }
+  .day-cell:hover{transform:scaleY(1.15);}
+  .day-cell.done{background:var(--sage);}
+  .day-cell.active-week{outline:2px solid var(--raspberry); outline-offset:1px;}
+  .day-track-labels{
+    display:flex;
+    justify-content:space-between;
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px 14px;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    min-width:600px;
+  }
 
-/* colour bar left */
-.day-trigger::before {
-  content: '';
-  width: 3px; height: 40px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
-.type-make  .day-trigger::before { background: var(--rose); }
-.type-story .day-trigger::before { background: var(--sage); }
-.type-tips  .day-trigger::before { background: var(--amber); }
-.type-life  .day-trigger::before { background: var(--purple); }
-.type-engage .day-trigger::before { background: var(--blue); }
+  /* ===== Tabs ===== */
+  .tabs{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px 16px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:600;
+    font-size:0.88rem;
+    padding:9px 16px;
+    border-radius:99px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .tab-btn:hover{border-color:var(--sage);}
+  .tab-btn:focus-visible{outline:2px solid var(--raspberry); outline-offset:2px;}
+  .tab-btn.active{
+    background:var(--sage);
+    border-color:var(--sage);
+    color:#fff;
+  }
 
-.day-num-badge {
-  width: 34px; height: 34px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 600; flex-shrink: 0;
-}
-.type-make   .day-num-badge { background: var(--rose-light);   color: #8a4530; }
-.type-story  .day-num-badge { background: var(--sage-light);   color: #4a6a40; }
-.type-tips   .day-num-badge { background: var(--amber-light);  color: #7a5c10; }
-.type-life   .day-num-badge { background: var(--purple-light); color: #5a3a8a; }
-.type-engage .day-num-badge { background: var(--blue-light);   color: #2a5a78; }
+  /* ===== Main ===== */
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:8px 24px 80px;
+  }
 
-.day-info { flex: 1; min-width: 0; }
-.day-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-.day-title-text { font-size: 14px; font-weight: 500; color: var(--brown); line-height: 1.35; }
+  .week-panel{display:none; animation:fadeIn 0.35s ease;}
+  .week-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
 
-.chevron {
-  font-size: 18px; color: var(--muted); flex-shrink: 0;
-  transition: transform 0.25s ease;
-  display: flex; align-items: center;
-}
-.day-item.open .chevron { transform: rotate(180deg); }
+  .week-hero{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 28px 24px;
+    margin-bottom:28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .week-hero::before{
+    content:"";
+    position:absolute;
+    top:0; right:0;
+    width:140px; height:140px;
+    background:radial-gradient(circle at top right, var(--honey) 0%, transparent 70%);
+    opacity:0.35;
+  }
+  .week-eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    color:var(--raspberry);
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+  }
+  .week-title{
+    font-size:1.7rem;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .week-goal{
+    color:var(--ink-soft);
+    max-width:640px;
+    margin-bottom:16px;
+    font-size:0.96rem;
+  }
+  .week-meta{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .kpi-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--sage);
+    color:#fff;
+    padding:8px 14px;
+    border-radius:99px;
+    font-size:0.82rem;
+    font-weight:600;
+  }
+  .week-progress-inline{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  .week-progress-bar{
+    width:120px;
+    height:6px;
+    border-radius:99px;
+    background:var(--line);
+    overflow:hidden;
+  }
+  .week-progress-fill{
+    height:100%;
+    background:var(--raspberry);
+    width:0%;
+    transition:width 0.4s ease;
+  }
 
-/* ── DAY BODY ── */
-.day-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-.day-item.open .day-body { max-height: 800px; }
+  /* ===== Task list ===== */
+  .task-list-title{
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+    margin:0 0 12px 4px;
+    font-weight:600;
+  }
+  .task-card{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:10px;
+    transition:border-color 0.2s ease, opacity 0.2s ease;
+  }
+  .task-card:hover{border-color:var(--sage);}
+  .task-card.checked{opacity:0.55;}
+  .task-card.checked .task-text{text-decoration:line-through; text-decoration-color:var(--sage);}
 
-.day-body-inner {
-  border-top: 1px solid var(--border);
-  padding: 16px;
-}
+  .task-check{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    border-radius:6px;
+    border:2px solid var(--sage);
+    background:transparent;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    margin-top:2px;
+  }
+  .task-check.on{background:var(--sage);}
+  .task-check:focus-visible{outline:2px solid var(--raspberry); outline-offset:2px;}
 
-.section-title {
-  font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 10px;
-}
+  .task-day{
+    flex-shrink:0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    font-weight:600;
+    background:var(--cream-deep);
+    color:var(--sage-deep);
+    padding:4px 8px;
+    border-radius:6px;
+    min-width:52px;
+    text-align:center;
+    margin-top:1px;
+  }
+  .task-body{flex:1; min-width:0;}
+  .task-text{font-size:0.94rem; margin-bottom:5px;}
+  .task-foot{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  .task-owner{
+    font-weight:600;
+    color:var(--raspberry);
+  }
+  .task-note{font-style:italic;}
 
-.bullet-list { list-style: none; margin-bottom: 14px; }
-.bullet-list li {
-  display: flex; gap: 10px;
-  font-size: 14px; line-height: 1.55; color: var(--brown);
-  padding: 7px 0;
-  border-bottom: 1px solid var(--border);
-}
-.bullet-list li:last-child { border-bottom: none; }
-.bullet-dot { color: var(--rose); flex-shrink: 0; font-size: 16px; margin-top: -1px; }
+  /* ===== Extra note ===== */
+  .extra-note{
+    background:var(--cream-deep);
+    border-left:3px solid var(--honey);
+    border-radius:8px;
+    padding:14px 18px;
+    margin-top:20px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+  .extra-note strong{color:var(--ink);}
 
-.hook-box {
-  background: var(--rose-light);
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-.hook-label {
-  font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--rose);
-  margin-bottom: 5px;
-}
-.hook-text {
-  font-size: 13px; color: #8a4530;
-  font-style: italic; line-height: 1.6;
-}
+  /* ===== Combo table (Week 2 only) ===== */
+  .combo-section{margin-top:28px;}
+  .combo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:14px;
+  }
+  .combo-card{
+    background:var(--sage);
+    color:#fff;
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .combo-name{font-family:'Literata',serif; font-weight:700; font-size:1.1rem; margin-bottom:6px;}
+  .combo-price{font-family:'JetBrains Mono',monospace; font-size:1.5rem; color:var(--honey); margin-bottom:10px;}
+  .combo-items{font-size:0.85rem; opacity:0.92; margin-bottom:10px;}
+  .combo-purpose{font-size:0.78rem; opacity:0.75; border-top:1px solid rgba(255,255,255,0.2); padding-top:10px;}
 
-/* ── TIPS FOOTER ── */
-.tips-section {
-  margin: 28px 16px 0;
-  background: var(--brown);
-  border-radius: 20px;
-  padding: 24px 20px;
-  color: white;
-}
-.tips-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-style: italic;
-  margin-bottom: 16px; color: white;
-}
-.tip-card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 13px 14px;
-  margin-bottom: 10px;
-}
-.tip-card:last-child { margin-bottom: 0; }
-.tip-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-.tip-desc { font-size: 12px; opacity: 0.8; line-height: 1.55; }
+  /* ===== Role table footer ===== */
+  .role-section{
+    margin-top:50px;
+    padding-top:30px;
+    border-top:1px solid var(--line);
+  }
+  .role-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:16px;
+  }
+  .role-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px;
+  }
+  .role-card h4{
+    font-family:'Literata',serif;
+    font-size:1.05rem;
+    margin-bottom:8px;
+    color:var(--sage-deep);
+  }
+  .role-card p{font-size:0.88rem; color:var(--ink-soft); margin:4px 0;}
 
-.footer-note {
-  text-align: center; padding: 28px 20px 0;
-  font-size: 12px; color: var(--muted);
-}
-.footer-note span { color: var(--rose); }
+  footer{
+    text-align:center;
+    padding:30px 24px 40px;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    .role-grid{grid-template-columns:1fr;}
+    .week-title{font-size:1.4rem;}
+    .header-top{flex-direction:column; align-items:flex-start;}
+    .task-card{flex-wrap:wrap;}
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <span class="header-tag">✨ Sổ tay content</span>
-  <div class="header-title">30 Ngày Làm <em>Kẹp Tóc</em><br>& Kể Chuyện Cuộc Sống</div>
-  <div class="header-sub">Bấm vào từng ngày để xem kịch bản 🎀</div>
-</div>
+<header>
+  <div class="header-top">
+    <div class="brand">
+      <span class="rabbit">🐰</span>
+      <div>
+        <div class="brand-name">Bếp Mẹ Thỏ</div>
+        <div class="brand-sub">Lộ trình ra mắt 30 ngày · Thủ Đức</div>
+      </div>
+    </div>
+    <div class="overall-progress">
+      <span>Tiến độ chung</span>
+      <div class="overall-bar"><div class="overall-bar-fill" id="overallFill"></div></div>
+      <span class="overall-num" id="overallNum">0%</span>
+    </div>
+  </div>
 
-<div class="legend">
-  <span class="pill pill-make">🎀 Làm &amp; Quay</span>
-  <span class="pill pill-story">🌿 Tâm sự</span>
-  <span class="pill pill-tips">💡 Tips</span>
-  <span class="pill pill-life">☕ Slice of Life</span>
-  <span class="pill pill-engage">💬 Kết nối</span>
-</div>
+  <div class="day-track-wrap">
+    <div class="day-track" id="dayTrack"></div>
+  </div>
+  <div class="day-track-labels">
+    <span>Ngày 1</span>
+    <span>Ngày 30</span>
+  </div>
 
-<div id="app"></div>
+  <div class="tabs" id="tabs"></div>
+</header>
+
+<main id="main"></main>
+
+<footer>
+  Bếp Mẹ Thỏ · Sữa chua nhà làm Thủ Đức · Trạng thái công việc chỉ lưu tạm trong phiên xem này, tải lại trang sẽ về mặc định.
+</footer>
 
 <script>
-const data = [
+const WEEKS = [
   {
-    week: "Tuần 1", theme: "Chào mừng vào thế giới của mình",
-    days: [
-      { type:"story", label:"Tâm sự", title:"Giới thiệu bản thân & hành trình bắt đầu làm kẹp",
-        bullets:["Mình là ai, đang làm gì trong cuộc sống?","Từ đâu mình bắt đầu làm kẹp tóc handmade?","Cảm xúc đầu tiên khi hoàn thành chiếc kẹp đầu tay","Mình muốn kênh này là nơi như thế nào?"],
-        hook:"Mình không nghĩ mình sẽ bắt đầu từ một ngày bình thường đến vậy…" },
-      { type:"make", label:"Làm & Quay", title:"Full process làm kẹp đầu tiên lên kênh",
-        bullets:["Chuẩn bị dụng cụ và vật liệu — giới thiệu từng thứ","Quay tay làm từ đầu đến cuối, nói chuyện tự nhiên","Lúc gặp khó — xử lý như thế nào?","Reveal thành phẩm và cảm nhận thật"],
-        hook:"Cái kẹp này mất khoảng X phút — xem thử bạn có kiên nhẫn được không nhé!" },
-      { type:"tips", label:"Tips", title:"3 dụng cụ không thể thiếu khi làm kẹp",
-        bullets:["Dụng cụ số 1 là gì, mua ở đâu, giá bao nhiêu?","Dụng cụ số 2 — câu chuyện mình mua sai mấy lần","Dụng cụ số 3 — tại sao quan trọng?","Mẹo nhỏ khi mới bắt đầu chưa có nhiều vốn"],
-        hook:"Cái này mình mua sai đến 3 lần mới tìm được đúng loại…" },
-      { type:"life", label:"Slice of Life", title:"Một ngày bình thường của mình trông như thế nào",
-        bullets:["Buổi sáng mình bắt đầu thế nào — cà phê, trà hay gì?","Không gian làm việc trông như thế nào?","Mình làm kẹp lúc nào trong ngày — tại sao giờ đó?","Suy nghĩ lúc ngồi làm — đầu óc đang nghĩ gì?"],
-        hook:"Người ta hay hỏi mình làm gì cả ngày — thật ra là thế này…" },
-      { type:"make", label:"Làm & Quay", title:"ASMR tay làm kẹp — không nhạc, chỉ tiếng tay",
-        bullets:["Quay cận tay, không cần nói nhiều","Để tiếng kéo, tiếng vải, tiếng kẹp bấm tự nhiên","Ánh sáng đẹp, góc quay gần và rõ nét","Chỉ cần caption — không cần voiceover"],
-        hook:"Xem lúc muốn thư giãn — không nhạc, không lời, chỉ có tiếng tay làm" },
-      { type:"story", label:"Tâm sự", title:"Điều gì giúp mình không bỏ cuộc?",
-        bullets:["Kể về một giai đoạn khó khăn trong cuộc sống","Lúc đó mình cảm thấy thế nào — nói thật","Handmade đã giúp mình như thế nào — cụ thể","Điều mình muốn nói với ai đang trong giai đoạn đó"],
-        hook:"Có một thời điểm mình gần như không muốn làm gì nữa…" },
-      { type:"engage", label:"Kết nối", title:"Hỏi audience: Bạn thích kiểu kẹp nào nhất?",
-        bullets:["Chụp 3–4 mẫu kẹp đã làm, đặt cạnh nhau","Hỏi mọi người vote mẫu yêu thích","Nói lý do mình thích mỗi mẫu khác nhau","Hứa tuần sau làm theo mẫu được vote nhiều nhất"],
-        hook:"Tuần sau mình sẽ làm theo lựa chọn của các bạn!" }
-    ]
+    number:1,
+    days:[1,7],
+    title:"Chuẩn bị hạ tầng số",
+    goal:"Có mặt chính thức trên Google Maps với hồ sơ chuẩn Local SEO và một trang chốt đơn chuyên nghiệp.",
+    kpi:"GMB được duyệt · Landing Page hoạt động",
+    tasks:[
+      {day:"1", text:"Đăng ký Google Business Profile, danh mục chính Cửa hàng sữa chua đông lạnh, danh mục phụ Cửa hàng thực phẩm sức khỏe và Cửa hàng sữa", owner:"Vợ", note:"Dùng địa chỉ nhà làm địa chỉ kinh doanh, chọn Địa điểm dịch vụ nếu không muốn khách đến trực tiếp"},
+      {day:"1", text:"Xác minh GMB qua video call hoặc thư bưu điện", owner:"Vợ", note:"Google thường xác minh trong 3 đến 5 ngày, cần chuẩn bị trước"},
+      {day:"2-3", text:"Điền đầy đủ thông tin GMB: giờ mở cửa, số điện thoại, khu vực giao hàng", owner:"Vợ", note:"Khu vực dịch vụ nên khoanh cụ thể các chung cư mục tiêu"},
+      {day:"2-3", text:"Viết mô tả doanh nghiệp 750 ký tự chứa từ khóa sữa chua nhà làm Thủ Đức, sữa chua Hy Lạp Thủ Đức, sữa chua nguyên chất cho bé", owner:"Chồng và Vợ", note:"Nhồi từ khóa tự nhiên, không spam"},
+      {day:"3", text:"Upload tối thiểu 15 ảnh lên GMB: sản phẩm, đóng gói, quy trình làm, mascot", owner:"Vợ", note:"Ảnh vuông hoặc 4:3, ánh sáng tự nhiên"},
+      {day:"4", text:"Mua domain riêng", owner:"Chồng", note:"Domain .vn tăng độ tin cậy Local SEO"},
+      {day:"4-6", text:"Code Landing Page: Hero, danh sách sản phẩm và combo, nút đặt hàng qua Zalo/Messenger, bản đồ Google Maps, khu vực giao hàng, số điện thoại click to call", owner:"Chồng", note:"Ưu tiên tốc độ tải trang dưới 3 giây, responsive mobile"},
+      {day:"5-6", text:"Tối ưu SEO on page: title, meta description, schema LocalBusiness, alt text ảnh có từ khóa", owner:"Chồng", note:"Lợi thế lớn nhất, cần khai thác triệt để"},
+      {day:"6", text:"Gắn Landing Page vào GMB và tạo bài đăng GMB đầu tiên", owner:"Vợ và Chồng", note:""},
+      {day:"7", text:"Đăng ký lên các nền tảng phụ: Fanpage, Zalo OA, app giao hàng địa phương", owner:"Vợ", note:"Đồng bộ NAP giống hệt trên mọi nền tảng"}
+    ],
+    extraNote:"Tính đồng nhất NAP (tên, địa chỉ, số điện thoại) trên GMB, Fanpage, Landing Page phải giống nhau tuyệt đối. Nên xin 3 đến 5 review đầu tiên từ người thân ngay khi GMB được duyệt để có social proof sớm."
   },
   {
-    week: "Tuần 2", theme: "Những bàn tay và những câu chuyện",
-    days: [
-      { type:"make", label:"Làm & Quay", title:"Làm mẫu kẹp được vote nhiều nhất tuần 1",
-        bullets:["Nhắc lại lời hứa từ ngày 7 — cảm ơn mọi người đã vote","Quay process làm mẫu đó từ đầu đến cuối","Nói tâm sự nhẹ trong lúc tay đang làm","Reveal và hỏi mọi người cảm nhận thế nào"],
-        hook:"Mọi người đã chọn — và đây là thành quả!" },
-      { type:"tips", label:"Tips", title:"Cách chọn vải & vật liệu: đừng mua như mình hồi đầu",
-        bullets:["Những loại vải mình hay dùng — ưu và nhược điểm","Câu chuyện lần đầu mua sai — mất bao nhiêu tiền?","Tiền nào mua được chất lượng gì — thực tế","Mua ở đâu rẻ mà tốt — chia sẻ địa chỉ cụ thể"],
-        hook:"Mình từng mua hết 200k vải nhưng chỉ dùng được 1/4…" },
-      { type:"story", label:"Tâm sự", title:"Sự khác biệt giữa bận và mệt",
-        bullets:["Bận là gì — mình hiểu như thế nào?","Mệt là gì — cảm giác đó trông như thế nào trong cuộc sống?","Khi nào mình nhận ra mình đang mệt chứ không phải bận?","Mình làm gì khi thấy mệt thật sự?"],
-        hook:"Bận thì vẫn có thể vui. Còn mệt thì khác hẳn…" },
-      { type:"make", label:"Làm & Quay", title:"Timelapse làm 5 cái kẹp trong một buổi chiều",
-        bullets:["Quay liên tục một buổi chiều làm kẹp","Dựng nhanh, thêm nhạc chill hoặc nhạc vui","Caption mô tả từng bước ngắn gọn","Cuối video show thành phẩm 5 cái cạnh nhau"],
-        hook:"Một buổi chiều productive của mình 🎀" },
-      { type:"life", label:"Slice of Life", title:"Góc làm việc của mình — aesthetic & thật sự",
-        bullets:["Quay vòng quanh góc làm kẹp — đẹp và thật","Kể về từng món đồ nhỏ ở đó — có câu chuyện gì không?","Ánh sáng, mùi hương, cảm giác khi ngồi ở đó","Tại sao nơi này làm mình thấy bình yên?"],
-        hook:"Nơi này nhỏ thôi, nhưng mình thấy bình yên nhất ở đây" },
-      { type:"tips", label:"Tips", title:"Chụp ảnh kẹp đẹp bằng điện thoại thường",
-        bullets:["Ánh sáng tự nhiên — đứng chỗ nào, giờ nào trong ngày?","Background đơn giản — dùng gì ở nhà cũng được","Góc chụp nào đẹp nhất cho kẹp tóc?","Chỉnh sửa ảnh thế nào — app gì, chỉnh gì?"],
-        hook:"Không cần máy ảnh xịn — mình làm được thì bạn cũng làm được!" },
-      { type:"engage", label:"Kết nối", title:"Q&A — hỏi mình bất cứ điều gì",
-        bullets:["Đăng story/post mời mọi người đặt câu hỏi trước","Chọn 5–7 câu hỏi hay nhất — cả về kẹp lẫn cuộc sống","Trả lời thật, không né, không diễn","Cuối video cảm ơn và hỏi lại một câu cho mọi người"],
-        hook:"Các bạn hỏi — mình trả lời thật 100%" }
-    ]
+    number:2,
+    days:[8,14],
+    title:"Đóng gói và hình ảnh",
+    goal:"Chuẩn hóa bộ nhận diện thương hiệu qua mascot Thỏ, bộ ảnh sản phẩm đồng nhất và 3 combo giá rõ ràng.",
+    kpi:"Bộ ảnh hoàn chỉnh · 3 combo chốt giá",
+    tasks:[
+      {day:"8-9", text:"Thiết kế/tinh chỉnh mascot Thỏ mặc tạp dề, tay cầm hũ sữa chua", owner:"Chồng/Designer", note:"Phong cách vẽ tay ấm áp, gần gũi trẻ em"},
+      {day:"9-10", text:"Thiết kế tem nhãn: logo mascot, tên sản phẩm, thành phần, ngày sản xuất/hạn dùng, hướng dẫn bảo quản, số điện thoại", owner:"Chồng/Designer", note:"Mỗi dòng sản phẩm dùng một màu tem riêng"},
+      {day:"10", text:"In tem nhãn decal chống thấm nước, chịu lạnh tốt", owner:"Vợ", note:"Đặt số lượng nhỏ trước để test độ bám dính"},
+      {day:"11-12", text:"Set up phông chụp ảnh cố định tại nhà", owner:"Vợ", note:"Nền trắng hoặc gỗ sáng màu, ánh sáng tự nhiên"},
+      {day:"11-13", text:"Chụp ảnh toàn bộ menu theo bố cục đồng nhất, 3 góc mỗi sản phẩm", owner:"Vợ", note:"Giữ tỷ lệ khung ảnh giống nhau cho tất cả sản phẩm"},
+      {day:"13", text:"Chụp ảnh và quay video ngắn quy trình làm", owner:"Vợ", note:"Không cần dựng cầu kỳ, quay tự nhiên bằng điện thoại"},
+      {day:"14", text:"Thiết kế 3 gói Combo cố định", owner:"Vợ và Chồng", note:"Xem bảng combo bên dưới"}
+    ],
+    combos:[
+      {name:"Combo Mẹ và Bé", items:"6 hũ Truyền thống + 4 hũ Mix vị", price:"100k", purpose:"Giá vừa túi tiền, mồi thu hút khách mới, sát ngưỡng freeship"},
+      {name:"Combo Gia Đình Khỏe", items:"6 hũ Cốt dừa + 6 hũ Mix vị + 1 chai sữa chua uống nhỏ", price:"130k", purpose:"Đơn giá trị trung bình, đa dạng vị cho gia đình 3 4 người"},
+      {name:"Combo Hy Lạp Cho Bé", items:"2 hũ Hy Lạp 100gr + 6 hũ Truyền thống + 1 chai sữa chua uống", price:"150k", purpose:"Nhắm mẹ bỉm quan tâm dinh dưỡng cao đạm, giá cao nhất trong 3 combo"}
+    ],
+    extraNote:"Treo rõ chính sách Mua 10 tặng 1 lên tất cả combo, cân đối chi phí ship nội thành vào trong giá combo để khách không bị sốc phí khi chốt đơn."
   },
   {
-    week: "Tuần 3", theme: "Đằng sau mỗi chiếc kẹp là một tâm trạng",
-    days: [
-      { type:"story", label:"Tâm sự", title:"Điều ước mình biết sớm hơn khi bắt đầu",
-        bullets:["Nhìn lại từ đầu — điều gì mình làm sai nhất?","Nếu bắt đầu lại, mình sẽ làm khác điều gì?","Bài học quan trọng nhất từ hành trình này","Lời nhắn cho ai đang muốn bắt đầu điều gì mới"],
-        hook:"Nếu được quay lại, mình chỉ muốn nói với bản thân rằng…" },
-      { type:"make", label:"Làm & Quay", title:"Thử chất liệu mới lần đầu — thành hay bại?",
-        bullets:["Chất liệu mới là gì — tại sao muốn thử?","Quay cả lúc lúng túng, không biết làm — thật tự nhiên","Thất bại hay thành công — cảm xúc thế nào?","Có thử lại không — và bài học rút ra"],
-        hook:"Mình không biết cái này sẽ ra sao… cùng xem nhé!" },
-      { type:"life", label:"Slice of Life", title:"Ngày không có cảm hứng — mình làm gì?",
-        bullets:["Hôm nay cảm thấy thế nào — nói thật","Ngày flat trông như thế nào với mình?","Mình làm gì khi không muốn làm gì — có ép bản thân không?","Suy nghĩ về creative burnout — có ai hiểu không?"],
-        hook:"Hôm nay thật ra mình không muốn làm gì cả…" },
-      { type:"tips", label:"Tips", title:"Xu hướng kẹp mùa này — và mình nghĩ gì?",
-        bullets:["Trend 1 — đẹp hay không, tại sao?","Trend 2 — mình đã thử chưa, kết quả thế nào?","Trend 3 — có phù hợp với phong cách của mình không?","Trend nào làm, trend nào bỏ qua — và lý do"],
-        hook:"Trend này nhìn xinh thật nhưng mà làm thì…" },
-      { type:"make", label:"Làm & Quay", title:"Làm kẹp theo màu sắc cảm xúc hôm nay",
-        bullets:["Hôm nay mình đang cảm thấy thế nào — một từ thôi","Tại sao chọn màu này để diễn tả cảm xúc đó?","Quay tay làm, nói chuyện về tâm trạng trong lúc làm","Thành phẩm trông như thế nào — có đúng cảm xúc không?"],
-        hook:"Hôm nay mình chọn màu này vì…" },
-      { type:"story", label:"Tâm sự", title:"Mình định nghĩa thành công như thế nào?",
-        bullets:["Hồi trước mình nghĩ thành công là gì?","Điều gì làm mình thay đổi cách nghĩ đó?","Bây giờ mình đo thành công bằng gì?","Và mình đang cảm thấy mình thành công không?"],
-        hook:"Hồi trước mình nghĩ thành công là… bây giờ thì khác rồi" },
-      { type:"engage", label:"Kết nối", title:"Challenge: Làm kẹp từ đồ có sẵn ở nhà",
-        bullets:["Mình làm trước — chỉ dùng đồ đang có, không mua thêm","Quay process và kết quả — hài hước cũng được","Mời mọi người làm theo và tag mình","Hứa sẽ repost những bài tham gia hay nhất"],
-        hook:"Challenge này không cần mua gì thêm — thử ngay đi!" }
-    ]
+    number:3,
+    days:[15,21],
+    title:"Content Storytelling",
+    goal:"Vượt qua tình trạng bài đăng bị trôi trong hội nhóm bằng cách xây dựng lòng tin từ chính hành trình cá nhân.",
+    kpi:"Tối thiểu 12 bài đăng · Nhóm khách thân thiết",
+    tasks:[
+      {day:"15", text:"Câu chuyện khởi nguồn: vì sao làm sữa chua cho con gái 3 tuổi", owner:"Cá nhân", note:"Ảnh gia đình, caption cảm xúc, không nhắc giá"},
+      {day:"15", text:"Giới thiệu mascot Thỏ, đặt tên và ra mắt bộ tem nhãn mới", owner:"Fanpage", note:"Ảnh mascot và tem"},
+      {day:"16", text:"Video quy trình ủ men sữa chua tại nhà, nhấn mạnh khâu tiệt trùng", owner:"Cá nhân và Fanpage", note:"Video ngắn 30 đến 45 giây"},
+      {day:"17", text:"Behind the scenes: một ngày làm sữa chua từ 5 giờ sáng", owner:"Cá nhân", note:"Ảnh chuỗi hoặc album"},
+      {day:"17", text:"Giải thích vì sao sữa chua nhà làm ít ngọt vẫn béo mịn", owner:"Fanpage", note:"Bài viết dạng hỏi đáp"},
+      {day:"18", text:"Con gái 3 tuổi ăn sữa chua, phản ứng thật không dàn dựng", owner:"Cá nhân", note:"Video hoặc ảnh tự nhiên"},
+      {day:"19", text:"So sánh sữa tươi thật khác sữa bột pha loãng thế nào", owner:"Fanpage", note:"Ảnh nguyên liệu thật"},
+      {day:"19", text:"Hậu trường dán tem, đóng gói cẩn thận trước khi giao", owner:"Cá nhân", note:"Ảnh cận cảnh"},
+      {day:"20", text:"Câu chuyện một khách quen đầu tiên đặt lại lần 2", owner:"Fanpage", note:"Ảnh feedback, xin phép trước khi đăng"},
+      {day:"20", text:"Chia sẻ hành trình vợ chồng cùng làm, chồng lo web vợ lo bếp", owner:"Cá nhân", note:"Ảnh gia đình"},
+      {day:"21", text:"Giới thiệu chi tiết 3 combo mới, kèm ưu đãi mua 10 tặng 1", owner:"Fanpage và Cá nhân", note:"Ảnh combo đẹp"},
+      {day:"21", text:"Lời cảm ơn tuần đầu, mời theo dõi Fanpage để nhận ưu đãi sớm", owner:"Cá nhân", note:"Bài viết ngắn"}
+    ],
+    extraNote:"Không đăng bài bán hàng trực tiếp vào hội nhóm. Bình luận tự nhiên dưới các bài liên quan, nhờ người quen tương tác thật trong 30 phút đầu sau khi đăng để tín hiệu thuật toán tốt hơn."
   },
   {
-    week: "Tuần 4", theme: "Kết thúc là khởi đầu mới",
-    days: [
-      { type:"make", label:"Làm & Quay", title:"Bộ sưu tập nhỏ cùng một concept",
-        bullets:["Chọn 1 concept — màu, mùa, hoặc cảm xúc gì đó","Làm 4–5 cái cùng concept đó trong một buổi","Kể tại sao chọn concept này — có ý nghĩa gì không?","Reveal cả bộ cuối video — sắp xếp đẹp"],
-        hook:"Mình muốn thử làm cả một bộ cùng nhau…" },
-      { type:"story", label:"Tâm sự", title:"Thích nhất & ghét nhất khi làm handmade",
-        bullets:["Điều mình yêu nhất — khoảnh khắc nào đẹp nhất?","Điều thật sự khó chịu — nói thẳng, không tô vẽ","Người ta hay nghĩ gì về làm handmade — đúng hay sai?","Nếu làm lại, mình vẫn chọn con đường này không?"],
-        hook:"Không phải lúc nào cũng aesthetic như trên mạng đâu nhé…" },
-      { type:"tips", label:"Tips", title:"Cách định giá sản phẩm handmade",
-        bullets:["Chi phí vật liệu tính như thế nào cho đúng?","Tính tiền công của mình ra sao — nhiều người bỏ qua điều này","Cộng thêm gì nữa — bao bì, thời gian ship, hao hụt?","Tại sao định giá thấp quá là hại bản thân?"],
-        hook:"Định giá thấp quá không phải tốt — đây là lý do…" },
-      { type:"life", label:"Slice of Life", title:"Vlog một ngày cuối tuần chill",
-        bullets:["Sáng chậm — không alarm, không vội","Làm vài cái kẹp nhưng không ép bản thân","Ra ngoài, đọc sách, hoặc làm gì đó thích","Tâm sự nhỏ cuối ngày — hôm nay cảm thấy thế nào?"],
-        hook:"Cuối tuần nhẹ nhàng của mình 🌿" },
-      { type:"make", label:"Làm & Quay", title:"Làm lại mẫu hỏng từ ngày đầu — so sánh trước sau",
-        bullets:["Lấy chiếc kẹp đầu tiên ra — nó trông như thế nào?","So sánh với kỹ năng hiện tại — khác gì?","Làm lại đúng mẫu đó với kỹ năng bây giờ","Đặt hai cái cạnh nhau — cảm xúc khi nhìn sự tiến bộ đó"],
-        hook:"Cái này là của mình ngày đầu làm… xấu lắm, nhưng…" },
-      { type:"story", label:"Tâm sự", title:"Người đã ảnh hưởng tới mình nhất",
-        bullets:["Người đó là ai — bạn bè, gia đình, hay người lạ?","Họ đã làm hoặc nói điều gì thay đổi mình?","Họ có biết họ đã ảnh hưởng tới mình không?","Điều đó thay đổi cách mình sống như thế nào?"],
-        hook:"Người thay đổi cách mình nhìn mọi thứ là người mình không ngờ đến…" },
-      { type:"engage", label:"Kết nối", title:"Hỏi audience về kế hoạch tháng tới",
-        bullets:["Tổng kết ngắn — mình đã làm được gì trong tháng này?","Hỏi mọi người muốn xem gì tiếp theo — kẹp hay cuộc sống?","Poll về chủ đề hoặc mẫu kẹp tháng tới","Cảm ơn thật lòng những người đã xem từ đầu"],
-        hook:"Tháng sau mình muốn làm điều các bạn thích — vote nhé!" },
-      { type:"make", label:"Làm & Quay", title:"Làm kẹp dưới ánh nến buổi tối",
-        bullets:["Setup ánh sáng nến hoặc đèn mờ — không cần nhiều","Không nói nhiều — để không khí tự nhiên","Tâm sự nhỏ về việc làm điều mình yêu thích","Video này khác với mọi ngày — muốn mọi người cảm nhận gì?"],
-        hook:"Tối nay mình muốn làm theo kiểu khác một chút…" },
-      { type:"story", label:"Tâm sự", title:"Nhìn lại 30 ngày — mình học được gì?",
-        bullets:["30 ngày trước mình là ai — bây giờ có khác không?","Video nào mình thích nhất và tại sao?","Điều bất ngờ nhất trong hành trình này là gì?","Cảm ơn những người đã xem và kế hoạch tiếp theo là gì?"],
-        hook:"30 ngày trước mình không biết mình sẽ thay đổi thế này…" }
-    ]
+    number:4,
+    days:[22,30],
+    title:"Khởi chạy và vận hành",
+    goal:"Chuyển từ giai đoạn xây dựng thương hiệu sang chốt đơn thực tế, đạt 50 đơn hàng và thu thập review 5 sao.",
+    kpi:"50 đơn hàng · 15 review 5 sao",
+    tasks:[
+      {day:"22", text:"Tung chương trình Ra mắt: giảm giá hoặc tặng kèm cho 20 đơn đầu tiên", owner:"Vợ", note:"Tặng thêm 1 hũ Mix vị cho đơn từ 100k, tạo cảm giác khan hiếm"},
+      {day:"22-23", text:"Kích hoạt kịch bản gom đơn qua Zalo/Messenger", owner:"Vợ", note:"Chào hỏi, xác nhận combo, xác nhận địa chỉ, thời gian giao, lời cảm ơn"},
+      {day:"23-24", text:"Thiết lập quy trình gọi ship nội thành", owner:"Vợ và Chồng", note:"Chốt 1 đến 2 đối tác ship quen, đóng gói kèm túi giữ lạnh"},
+      {day:"24-25", text:"Chạy quảng cáo nhỏ Facebook nhắm khu vực Thủ Đức", owner:"Chồng", note:"Ngân sách thử nghiệm nhỏ trước, theo dõi tỷ lệ chuyển đổi"},
+      {day:"25-27", text:"Sau mỗi đơn giao thành công, gửi lời nhắn xin đánh giá Google Maps kèm link trực tiếp", owner:"Vợ", note:"Cảm ơn chị đã tin tưởng Bếp Mẹ Thỏ, mời để lại 5 sao trên Google"},
+      {day:"26-28", text:"Theo dõi và trả lời từng review, kể cả review góp ý", owner:"Vợ", note:"Phản hồi nhanh trong vài giờ để tạo thiện cảm"},
+      {day:"27-29", text:"Tổng hợp danh sách khách đã mua, phân loại theo chung cư", owner:"Vợ", note:"Ghi vào file đơn giản, chuẩn bị remarketing tuần sau"},
+      {day:"29-30", text:"Đánh giá lại toàn bộ chỉ số: số đơn, số review, vị trí GMB trên bản đồ", owner:"Vợ và Chồng", note:"Điều chỉnh combo hoặc content dựa trên dữ liệu thực tế"}
+    ],
+    extraNote:"Đặt mục tiêu tối thiểu 15 review 5 sao trong tuần 4, vì đây là giai đoạn Google đánh giá độ uy tín ban đầu của hồ sơ."
   }
 ];
 
-const app = document.getElementById('app');
-let dayNum = 0;
+const state = {};
+WEEKS.forEach(w => { state[w.number] = w.tasks.map(() => false); });
+let activeWeek = 1;
 
-data.forEach(week => {
-  const wh = document.createElement('div');
-  wh.className = 'week-header';
-  wh.innerHTML = `<span class="week-badge">${week.week}</span><span class="week-theme">"${week.theme}"</span>`;
-  app.appendChild(wh);
+function countProgress(weekNumber){
+  const arr = state[weekNumber];
+  const done = arr.filter(Boolean).length;
+  return {done, total: arr.length};
+}
 
-  const dl = document.createElement('div');
-  dl.className = 'days-list';
+function overallProgress(){
+  let done=0, total=0;
+  WEEKS.forEach(w=>{
+    const p = countProgress(w.number);
+    done += p.done; total += p.total;
+  });
+  return {done, total};
+}
 
-  week.days.forEach(day => {
-    dayNum++;
-    const item = document.createElement('div');
-    item.className = `day-item type-${day.type}`;
+function renderDayTrack(){
+  const track = document.getElementById('dayTrack');
+  track.innerHTML = '';
+  for(let d=1; d<=30; d++){
+    const cell = document.createElement('div');
+    cell.className = 'day-cell';
+    const week = WEEKS.find(w => d >= w.days[0] && d <= w.days[1]);
+    if(week.number === activeWeek) cell.classList.add('active-week');
+    cell.title = 'Ngày ' + d + ' · Tuần ' + week.number;
+    cell.addEventListener('click', () => switchWeek(week.number));
+    track.appendChild(cell);
+  }
+}
 
-    item.innerHTML = `
-      <div class="day-trigger">
-        <div class="day-num-badge">N${dayNum}</div>
-        <div class="day-info">
-          <div class="day-label">${day.label}</div>
-          <div class="day-title-text">${day.title}</div>
-        </div>
-        <div class="chevron">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-body-inner">
-          <div class="section-title">Sườn nội dung</div>
-          <ul class="bullet-list">
-            ${day.bullets.map(b => `<li><span class="bullet-dot">—</span><span>${b}</span></li>`).join('')}
-          </ul>
-          <div class="hook-box">
-            <div class="hook-label">Câu mở đầu gợi ý</div>
-            <div class="hook-text">"${day.hook}"</div>
-          </div>
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  WEEKS.forEach(w => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn' + (w.number === activeWeek ? ' active' : '');
+    btn.textContent = 'Tuần ' + w.number;
+    btn.addEventListener('click', () => switchWeek(w.number));
+    tabs.appendChild(btn);
+  });
+}
+
+function taskCard(weekNumber, task, idx){
+  const checked = state[weekNumber][idx];
+  const card = document.createElement('div');
+  card.className = 'task-card' + (checked ? ' checked' : '');
+
+  const check = document.createElement('button');
+  check.className = 'task-check' + (checked ? ' on' : '');
+  check.setAttribute('aria-label', 'Đánh dấu hoàn thành: ' + task.text);
+  check.innerHTML = checked ? '✓' : '';
+  check.addEventListener('click', () => {
+    state[weekNumber][idx] = !state[weekNumber][idx];
+    renderWeekPanel(weekNumber);
+    updateProgressUI();
+  });
+
+  const day = document.createElement('div');
+  day.className = 'task-day mono';
+  day.textContent = 'Ngày ' + task.day;
+
+  const body = document.createElement('div');
+  body.className = 'task-body';
+  const text = document.createElement('div');
+  text.className = 'task-text';
+  text.textContent = task.text;
+  const foot = document.createElement('div');
+  foot.className = 'task-foot';
+  const owner = document.createElement('span');
+  owner.className = 'task-owner';
+  owner.textContent = task.owner;
+  foot.appendChild(owner);
+  if(task.note){
+    const note = document.createElement('span');
+    note.className = 'task-note';
+    note.textContent = task.note;
+    foot.appendChild(note);
+  }
+  body.appendChild(text);
+  body.appendChild(foot);
+
+  card.appendChild(check);
+  card.appendChild(day);
+  card.appendChild(body);
+  return card;
+}
+
+function renderWeekPanel(weekNumber){
+  const week = WEEKS.find(w => w.number === weekNumber);
+  const panel = document.getElementById('panel-' + weekNumber);
+  if(!panel) return;
+
+  const listWrap = panel.querySelector('.task-list-wrap');
+  listWrap.innerHTML = '';
+  week.tasks.forEach((t, i) => listWrap.appendChild(taskCard(weekNumber, t, i)));
+
+  const p = countProgress(weekNumber);
+  const pct = p.total ? Math.round((p.done/p.total)*100) : 0;
+  panel.querySelector('.week-progress-fill').style.width = pct + '%';
+  panel.querySelector('.week-progress-text').textContent = p.done + '/' + p.total + ' việc';
+}
+
+function buildWeekPanel(week){
+  const panel = document.createElement('section');
+  panel.className = 'week-panel';
+  panel.id = 'panel-' + week.number;
+
+  let comboHTML = '';
+  if(week.combos){
+    comboHTML = `
+      <div class="combo-section">
+        <div class="task-list-title">Gợi ý 3 gói combo</div>
+        <div class="combo-grid">
+          ${week.combos.map(c => `
+            <div class="combo-card">
+              <div class="combo-name">${c.name}</div>
+              <div class="combo-price mono">${c.price}</div>
+              <div class="combo-items">${c.items}</div>
+              <div class="combo-purpose">${c.purpose}</div>
+            </div>
+          `).join('')}
         </div>
       </div>
     `;
+  }
 
-    item.querySelector('.day-trigger').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.day-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
+  panel.innerHTML = `
+    <div class="week-hero">
+      <span class="week-eyebrow">Ngày ${week.days[0]} đến ${week.days[1]}</span>
+      <h2 class="week-title">Tuần ${week.number}: ${week.title}</h2>
+      <p class="week-goal">${week.goal}</p>
+      <div class="week-meta">
+        <span class="kpi-badge">🎯 ${week.kpi}</span>
+        <div class="week-progress-inline">
+          <div class="week-progress-bar"><div class="week-progress-fill"></div></div>
+          <span class="week-progress-text mono">0/0 việc</span>
+        </div>
+      </div>
+    </div>
 
-    dl.appendChild(item);
+    <div class="task-list-title">Danh sách công việc</div>
+    <div class="task-list-wrap"></div>
+
+    ${comboHTML}
+
+    <div class="extra-note"><strong>Lưu ý:</strong> ${week.extraNote}</div>
+  `;
+
+  return panel;
+}
+
+function switchWeek(weekNumber){
+  activeWeek = weekNumber;
+  document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + weekNumber).classList.add('active');
+  renderTabs();
+  renderDayTrack();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function updateProgressUI(){
+  WEEKS.forEach(w => {
+    const p = countProgress(w.number);
+    const pct = p.total ? Math.round((p.done/p.total)*100) : 0;
+    const panel = document.getElementById('panel-' + w.number);
+    if(panel){
+      panel.querySelector('.week-progress-fill').style.width = pct + '%';
+      panel.querySelector('.week-progress-text').textContent = p.done + '/' + p.total + ' việc';
+    }
+  });
+  const o = overallProgress();
+  const opct = o.total ? Math.round((o.done/o.total)*100) : 0;
+  document.getElementById('overallFill').style.width = opct + '%';
+  document.getElementById('overallNum').textContent = opct + '% (' + o.done + '/' + o.total + ')';
+}
+
+function init(){
+  const main = document.getElementById('main');
+  WEEKS.forEach(w => {
+    const panel = buildWeekPanel(w);
+    if(w.number === activeWeek) panel.classList.add('active');
+    main.appendChild(panel);
   });
 
-  app.appendChild(dl);
-});
+  // role section appended to last panel's container area (as separate block at end of page)
+  const roleSection = document.createElement('div');
+  roleSection.className = 'role-section';
+  roleSection.innerHTML = `
+    <h3>Phân công vai trò xuyên suốt 30 ngày</h3>
+    <div class="role-grid">
+      <div class="role-card">
+        <h4>Vợ · Sản xuất, chăm sóc khách</h4>
+        <p>Đóng gói, chất lượng sản phẩm, trả lời khách, xin review.</p>
+        <p>Công cụ chính: Zalo, Messenger, điện thoại chụp ảnh.</p>
+      </div>
+      <div class="role-card">
+        <h4>Chồng · Kỹ thuật, SEO</h4>
+        <p>GMB kỹ thuật, Landing Page, SEO on page, theo dõi chỉ số.</p>
+        <p>Công cụ chính: Google Search Console, code Landing Page, Google Business Profile Manager.</p>
+      </div>
+    </div>
+  `;
+  main.appendChild(roleSection);
 
-// Tips section
-const tips = document.createElement('div');
-tips.className = 'tips-section';
-tips.innerHTML = `
-  <h3>Bí kíp để làm tốt 🤍</h3>
-  <div class="tip-card"><div class="tip-title">📱 Quay tự nhiên nhất</div><div class="tip-desc">Đừng cố diễn. Nói như nói chuyện với bạn thân — khán giả cảm nhận được sự thật.</div></div>
-  <div class="tip-card"><div class="tip-title">🎀 Kẹp là bạn đồng hành</div><div class="tip-desc">Không cần lúc nào cũng review kẹp — để nó xuất hiện tự nhiên trong cuộc sống.</div></div>
-  <div class="tip-card"><div class="tip-title">📆 Không cần đăng đúng ngày</div><div class="tip-desc">Lộ trình này là hướng dẫn, không phải lịch cứng. Linh hoạt theo cuộc sống thật của bạn.</div></div>
-  <div class="tip-card"><div class="tip-title">💬 Hook là vũ khí mạnh nhất</div><div class="tip-desc">3 giây đầu quyết định tất cả. Bắt đầu bằng câu hỏi, bí ẩn, hoặc điều bất ngờ.</div></div>
-  <div class="tip-card"><div class="tip-title">🌿 Đừng so sánh</div><div class="tip-desc">Kênh của bạn là câu chuyện của bạn. Không ai có bàn tay và cuộc sống giống bạn.</div></div>
-  <div class="tip-card"><div class="tip-title">🔁 Tái sử dụng nội dung</div><div class="tip-desc">1 video dài → cắt thành 3 Reels/Shorts. Làm ít, lan tỏa nhiều hơn.</div></div>
-`;
-app.appendChild(tips);
+  renderTabs();
+  renderDayTrack();
+  WEEKS.forEach(w => renderWeekPanel(w.number));
+  updateProgressUI();
+}
 
-const footer = document.createElement('div');
-footer.className = 'footer-note';
-footer.innerHTML = `Được tạo cho bạn với 🤍 &nbsp;|&nbsp; <span>Kẹp Tóc Handmade × Content Journey</span>`;
-app.appendChild(footer);
+init();
 </script>
 </body>
 </html>
